@@ -11,20 +11,32 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            Console.WriteLine("Enter START to start stopwatch: ");
-            string s1 = Console.ReadLine().ToUpper();
-            if (s1 == "START")
+            // Array to store No. of notes values
+            int[] notes = { 1, 2, 5, 10, 50, 100, 500, 1000 };
+            Console.Write("Enter the change amount: ");
+            //VARIABLES
+            int changeAmount = Convert.ToInt32(Console.ReadLine());
+            IDictionary<int, int> indidualNotesList = new Dictionary<int, int>();
+            int minNotes = 0;
+            int i = 7;
+
+            while (changeAmount > 0)
             {
-                stopwatch.Start();
-                Console.WriteLine("Enter END to stop stopwatch: ");
-                string s2 = Console.ReadLine().ToUpper();
-                if(s2 == "END")
+                int noteCounter = 0;
+                if (changeAmount >= notes[i])
                 {
-                    stopwatch.Stop();
+                    noteCounter = changeAmount / notes[i];
+                    indidualNotesList[notes[i]] = noteCounter;
+                    changeAmount = changeAmount - noteCounter * notes[i];
                 }
+                minNotes = minNotes + noteCounter;
+                i--;
             }
-            Console.WriteLine($"Time elpased is {stopwatch.ElapsedMilliseconds}");
+            Console.WriteLine($"The minimum no. of notes given by the note vending machine in change is {minNotes}");
+            foreach(KeyValuePair<int, int> note in indidualNotesList)
+            {
+                Console.WriteLine($"The numbers of {note.Key} Rs. Note is {note.Value}" );
+            }
 
         }        
     }

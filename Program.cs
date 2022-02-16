@@ -11,35 +11,21 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            //Taking Coupon Number Inputs from the User
-            int[] couponNumbers = new int[4];
-            for (int i = 0; i < couponNumbers.Length; i++)
+            Stopwatch stopwatch = new Stopwatch();
+            Console.WriteLine("Enter START to start stopwatch: ");
+            string s1 = Console.ReadLine().ToUpper();
+            if (s1 == "START")
             {
-                Console.WriteLine("Enter the 3 digit coupon number: ");
-                couponNumbers[i] = Convert.ToInt32(Console.ReadLine());
-            }
-            //VARIABLES
-            int totalRandomNumbers = 0;
-            int j = 0;
-
-            //Calculating the no. of times Rnadom function called to match all distinct coupoun numbers.
-            while (j < 4)
-            {
-                if (couponNumbers[j] == GetRandomNumber())
+                stopwatch.Start();
+                Console.WriteLine("Enter END to stop stopwatch: ");
+                string s2 = Console.ReadLine().ToUpper();
+                if(s2 == "END")
                 {
-                    j++;
+                    stopwatch.Stop();
                 }
-                totalRandomNumbers++;
             }
-            Console.WriteLine($"The no. of random function counters to match all coupon numbers is {totalRandomNumbers}");
-        }
-        //Function to get random number
-        static int GetRandomNumber()
-            {
-                Random random = new Random();
-                int r1 = random.Next(100, 1000);
-                return r1;
-            }
-        
+            Console.WriteLine($"Time elpased is {stopwatch.ElapsedMilliseconds}");
+
+        }        
     }
 }

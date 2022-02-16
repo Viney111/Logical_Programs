@@ -11,20 +11,16 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            TemperatureConversion.CelciousToFarenhite(37.2);       
+            MonthlyPayment(2000, 2, 3.2);
         }
-        class TemperatureConversion
+        static void MonthlyPayment(int Principal, int Year, double Rate)
         {
-            public static void CelciousToFarenhite(double x)
-            {
-                double farenhiteTemperature = (x * 9 / 5) + 32;
-                Console.WriteLine($"The farenhite temperatue is {farenhiteTemperature}");
-            }
-            public static void farenhiteToCelcius(double x)
-            {
-                double celciusTemperature = (x - 32) * 9/5;
-                Console.WriteLine($"The farenhite temperatue is {celciusTemperature}");
-            }
+            //VARIABLES
+            int n = 12 * Year;
+            double r = Rate / (12 * 100);
+
+            double monthlyPayment = (Principal * r) / (1 - Math.Pow(1 + r, -n)) ;
+            Console.WriteLine($"Monthly payment is {monthlyPayment}");
         }
     }
 }

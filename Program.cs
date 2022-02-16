@@ -11,33 +11,20 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            // Array to store No. of notes values
-            int[] notes = { 1, 2, 5, 10, 50, 100, 500, 1000 };
-            Console.Write("Enter the change amount: ");
-            //VARIABLES
-            int changeAmount = Convert.ToInt32(Console.ReadLine());
-            IDictionary<int, int> indidualNotesList = new Dictionary<int, int>();
-            int minNotes = 0;
-            int i = 7;
-
-            while (changeAmount > 0)
+            TemperatureConversion.CelciousToFarenhite(37.2);       
+        }
+        class TemperatureConversion
+        {
+            public static void CelciousToFarenhite(double x)
             {
-                int noteCounter = 0;
-                if (changeAmount >= notes[i])
-                {
-                    noteCounter = changeAmount / notes[i];
-                    indidualNotesList[notes[i]] = noteCounter;
-                    changeAmount = changeAmount - noteCounter * notes[i];
-                }
-                minNotes = minNotes + noteCounter;
-                i--;
+                double farenhiteTemperature = (x * 9 / 5) + 32;
+                Console.WriteLine($"The farenhite temperatue is {farenhiteTemperature}");
             }
-            Console.WriteLine($"The minimum no. of notes given by the note vending machine in change is {minNotes}");
-            foreach(KeyValuePair<int, int> note in indidualNotesList)
+            public static void farenhiteToCelcius(double x)
             {
-                Console.WriteLine($"The numbers of {note.Key} Rs. Note is {note.Value}" );
+                double celciusTemperature = (x - 32) * 9/5;
+                Console.WriteLine($"The farenhite temperatue is {celciusTemperature}");
             }
-
-        }        
+        }
     }
 }

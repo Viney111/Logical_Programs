@@ -11,21 +11,18 @@ namespace Logical
         static void Main(string[] args)
         {
             Console.WriteLine("Welocome to Logical Programs");
-            Console.Write("Enter last number of the series: ");
+            Console.Write("Enter the number to be check: ");
             //VARIABLES
-            int lastNumber = Convert.ToInt32(Console.ReadLine());
-            int j = 1;
-            int i = 0;
-            int k = 0;
-
-            Console.Write(i + " " + j + " ");
-            while (k < lastNumber - i)
+            int number = Convert.ToInt32(Console.ReadLine());
+            int i = 1;
+            int j = 0;
+            while (number > i)
             {
-                k = j + i;
-                Console.Write(k + " ");
-                i = j;
-                j = k;
-            }            
-        }
+                j = number % i == 0 ? j + i : j;
+                i++;
+            }
+            string result = j == number ? $"{number} is a perfect number" : $"{number} is not a perfect number";
+            Console.WriteLine(result);
+        }            
     }
 }

@@ -11,42 +11,18 @@ namespace Logical
         static void Main(string[] args)
         {
             Console.WriteLine("Welocome to Logical Programs");
-            Console.Write("Enter the number to be check: ");
+            Console.Write("Enter the number to be reversed: ");
             //VARIABLES
             int number = Convert.ToInt32(Console.ReadLine());
-            if (number > 1)
-            {
-                if (number != 2)
-                {
-                    int i = 2;
-                    int flag = 0;
-                    while (number > i)
-                    {
-                        if (number % i == 0)
-                        {
-                            Console.WriteLine($"{number} is not a prime number");
-                            flag = 0;
-                            break;
-                        }
-                        else
-                        {
-                            flag = 1;
-                        }
-                        i++;
-                    }
-                    string result = flag == 1 ? $"{number} is prime number" : "";
-                    Console.WriteLine(result);
-                }
-                else
-                {
-                    Console.WriteLine($"{number} is prime number");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Please enter a positive number");
-            }
+            int reverseNumber = 0;
 
+            while(number > 0)
+            {
+                int rem = number % 10;
+                reverseNumber = reverseNumber * 10 + rem;
+                number /= 10;
+            }
+            Console.WriteLine($"The number after reversing is {reverseNumber}");
         }            
     }
 }

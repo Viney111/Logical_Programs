@@ -14,15 +14,39 @@ namespace Logical
             Console.Write("Enter the number to be check: ");
             //VARIABLES
             int number = Convert.ToInt32(Console.ReadLine());
-            int i = 1;
-            int j = 0;
-            while (number > i)
+            if (number > 1)
             {
-                j = number % i == 0 ? j + i : j;
-                i++;
+                if (number != 2)
+                {
+                    int i = 2;
+                    int flag = 0;
+                    while (number > i)
+                    {
+                        if (number % i == 0)
+                        {
+                            Console.WriteLine($"{number} is not a prime number");
+                            flag = 0;
+                            break;
+                        }
+                        else
+                        {
+                            flag = 1;
+                        }
+                        i++;
+                    }
+                    string result = flag == 1 ? $"{number} is prime number" : "";
+                    Console.WriteLine(result);
+                }
+                else
+                {
+                    Console.WriteLine($"{number} is prime number");
+                }
             }
-            string result = j == number ? $"{number} is a perfect number" : $"{number} is not a perfect number";
-            Console.WriteLine(result);
+            else
+            {
+                Console.WriteLine("Please enter a positive number");
+            }
+
         }            
     }
 }

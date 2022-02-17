@@ -11,17 +11,18 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(sqrt(563));
+            Console.WriteLine(ToBinary(198));
         }
-        static double sqrt(double C)
+        static string ToBinary(int N)
         {
-            double t = C;
-            while (Math.Abs(t - (C / t)) > 1e-15 * t)
+            string binary = "";
+            while (N > 0)
             {
-                t = (t + (C / t)) / 2;
-
+                binary = N % 2 == 0 ? 0 + binary : 1 + binary;
+                N /= 2;
             }
-            return t;
+            return binary;
         }
+        
     }
 }

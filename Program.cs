@@ -11,17 +11,24 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(ToBinary(198));
+            Console.Write("Enter decimal Number: ");
+            int N = Convert.ToInt32(Console.ReadLine());
+            Binary b1 = new Binary(N);
+            Console.WriteLine($"The number after swapping binary nibbles is {b1.swapNibbles()}");
+
         }
-        static string ToBinary(int N)
+        public class Binary
         {
-            string binary = "";
-            while (N > 0)
+            public int x;
+
+            public Binary(int X)
             {
-                binary = N % 2 == 0 ? 0 + binary : 1 + binary;
-                N /= 2;
+                this.x = X;
             }
-            return binary;
+            public int swapNibbles()
+            {
+                return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);
+            }
         }
         
     }

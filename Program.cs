@@ -11,16 +11,17 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            MonthlyPayment(2000, 2, 3.2);
+            Console.WriteLine(sqrt(563));
         }
-        static void MonthlyPayment(int Principal, int Year, double Rate)
+        static double sqrt(double C)
         {
-            //VARIABLES
-            int n = 12 * Year;
-            double r = Rate / (12 * 100);
+            double t = C;
+            while (Math.Abs(t - (C / t)) > 1e-15 * t)
+            {
+                t = (t + (C / t)) / 2;
 
-            double monthlyPayment = (Principal * r) / (1 - Math.Pow(1 + r, -n)) ;
-            Console.WriteLine($"Monthly payment is {monthlyPayment}");
+            }
+            return t;
         }
     }
 }

@@ -11,24 +11,39 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter decimal Number: ");
-            int N = Convert.ToInt32(Console.ReadLine());
-            Binary b1 = new Binary(N);
-            Console.WriteLine($"The number after swapping binary nibbles is {b1.swapNibbles()}");
-
+            //VARIABLES
+            Console.Write("Enter the temperature value : ");
+            double tempToBeCoverted =Convert.ToInt32(Console.ReadLine());
+            TemperatureConversion T1 = new TemperatureConversion();
+            T1.TempConversion(tempToBeCoverted);
         }
-        public class Binary
+    }
+    class TemperatureConversion
+    {
+        public void TempConversion(double x)
         {
-            public int x;
+            //VARIABLES
+            int option;
+            do
+            {
+                Console.WriteLine("Enter the option for Converting Temperature \n 1 :- For changing F to C \n 2 :- For changing C to F ");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        double celciusTemperature = (x - 32) * 5 / 9;
+                        Console.WriteLine($"The Celcius temperatue is {celciusTemperature}");
+                        break;
+                    case 2:
+                        double farenhiteTemperature = (x * 9 / 5) + 32;
+                        Console.WriteLine($"The farenhite temperatue is {farenhiteTemperature}");
+                        break;
+                    default:
+                        Console.WriteLine("Please enter valid option");
+                        break;
 
-            public Binary(int X)
-            {
-                this.x = X;
-            }
-            public int swapNibbles()
-            {
-                return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);
-            }
+                }
+            } while (option != 1 && option != 2);
         }
         
     }
